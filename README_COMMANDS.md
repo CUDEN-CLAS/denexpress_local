@@ -1,22 +1,22 @@
 **Some playbooks require a vault password file to run properly.** Ask one of the developers for this password.
 
-# Running express_local
+# Running denexpress_local
 * Vagrant commands
   * To start the VM, open a Terminal window and type the following commands:  
     ```
-    cd ~/vms/express_local
+    cd ~/denexpress_local
     vagrant up
 
     ```
   * To stop the VM, open a Terminal window and type the following commands:  
     ```
-    cd ~/vms/express_local
+    cd ~/denexpress_local
     vagrant halt
 
     ```
   * To start a share session (requires account on atlas.hashicorp.com)
     ```
-    cd ~/vms/express_local
+    cd ~/denexpress_local
     vagrant login
     vagrant share
 
@@ -32,24 +32,24 @@
 * Express_local commands
   * Create a new express site:  
     ```
-    cd ~/vms/express_local
+    cd ~/denexpress_local
     ansible-playbook -i ansible/hosts ansible/express_site.yml
 
     ```
     ```
-    cd ~/vms/express_local
+    cd ~/denexpress_local
     ansible-playbook -i ansible/hosts ansible/express_site.yml --extra-vars "type=[r,reinstall,c,create] profile=[e,express] path=[anything-you-want]"
 
     ```
   * Run tests:  
     ```
-    cd ~/vms/express_local  
+    cd ~/denexpress_local  
     ansible-playbook -i ansible/hosts ansible/run_tests.yml
 
     ```
   * Update code to the latest version of Express 2.0:  
     ```
-    cd ~/vms/express_local  
+    cd ~/denexpress_local  
     ansible-playbook -i ansible/hosts ansible/update_repos.yml
 
     ```

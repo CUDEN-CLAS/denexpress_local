@@ -13,12 +13,12 @@
     - name: Create initial directory structure
       file: path={{ item }} state=directory mode=0775
       with_items:
-        - "~/express_local/data/code"
+        - "~/denexpress_local/data/code"
 
     - name: Clone dslm_base repository
       git:
         repo: "git@github.com:johnquest/dslm_base.git"
-        dest: "~/express_local/data/code/dslm_base"
+        dest: "~/denexpress_local/data/code/dslm_base"
         version: "poolb-dev"
         recursive: yes
         accept_hostkey: yes
@@ -27,12 +27,12 @@
     - name: Check out Express 2.0 branch
       command: "git checkout dev"
       args:
-        chdir: "~/express_local/data/code/dslm_base/profiles/express-current"
+        chdir: "~/denexpress_local/data/code/dslm_base/profiles/express-current"
 
     - name: Clone package_base repository
       git:
         repo: "git@github.com:johnquest/packages_base.git"
-        dest: "~/express_local/data/code/packages_base"
+        dest: "~/denexpress_local/data/code/packages_base"
         version: "dev"
         recursive: yes
         accept_hostkey: yes
@@ -41,7 +41,7 @@
     - name: Clone Varnish VCL
       git:
         repo: "git@github.com:johnquest/varnish.git"
-        dest: "~/express_local/data/code/varnish"
+        dest: "~/denexpress_local/data/code/varnish"
         version: "master"
         accept_hostkey: yes
         key_file: "{{ key_file }}"
@@ -49,7 +49,7 @@
     - name: Clone Inventory
       git:
         repo: "git@github.com:johnquest/inventory.git"
-        dest: "~/express_local/data/code/inventory"
+        dest: "~/denexpress_local/data/code/inventory"
         version: "dev"
         accept_hostkey: yes
         key_file: "{{ key_file }}"
@@ -57,7 +57,7 @@
     - name: Clone logstash configuration
       git:
         repo: "git@github.com:CUDEN-CLAS/logstash.git"
-        dest: "~/express_local/data/code/logstash"
+        dest: "~/denexpress_local/data/code/logstash"
         version: "master"
         accept_hostkey: yes
         key_file: "{{ key_file }}"
@@ -65,7 +65,7 @@
     - name: Clone elasticsearch configuration
       git:
         repo: "git@github.com:CuBoulder/elasticsearch.git"
-        dest: "~/express_local/data/code/elasticsearch"
+        dest: "~/denexpress_local/data/code/elasticsearch"
         version: "master"
         accept_hostkey: yes
         key_file: "{{ key_file }}"

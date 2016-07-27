@@ -1,5 +1,5 @@
 HashKnownHosts no
-Host 192.168.33.* express.local logs.local inventory.local
+Host 192.168.33.* denexpress.local denlogs.local deninventory.local
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
     User dplagnt

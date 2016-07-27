@@ -7,9 +7,9 @@
 # TODO:
 # Test webserver so that the inventory can move sites up and down the environment stack.
 hosts = {
-  "inventory.local" => "192.168.33.21",
-  "express.local" => "192.168.33.20",
-  "logs.local" => "192.168.33.22",
+  "deninventory.local" => "192.168.33.21",
+  "denexpress.local" => "192.168.33.20",
+  "denlogs.local" => "192.168.33.22",
 }
 
 # All Vagrant configuration is done below.
@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
       machine.vm.provider "virtualbox" do |v|
         v.name = name
 
-        if name.include? "express.local"
+        if name.include? "denexpress.local"
           v.customize ["modifyvm", :id, "--memory", 4096]
           v.customize ["modifyvm", :id, "--cpus", "2"]
         else
@@ -40,7 +40,7 @@ Vagrant.configure(2) do |config|
 
     end
 
-    if name.include? "inventory.local"
+    if name.include? "deninventory.local"
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/vm_inventory.yml"
         ansible.inventory_path = "ansible/hosts"
@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
       end
     end
 
-    if name.include? "express.local"
+    if name.include? "denexpress.local"
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/vm_express.yml"
         ansible.inventory_path = "ansible/hosts"
@@ -56,7 +56,7 @@ Vagrant.configure(2) do |config|
       end
     end
 
-    if name.include? "logs.local"
+    if name.include? "denlogs.local"
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/vm_logs.yml"
         ansible.inventory_path = "ansible/hosts"
@@ -68,6 +68,6 @@ Vagrant.configure(2) do |config|
     # NFS protocol version 3.
     # Absolute time for which file and directory entries are kept in the file-attribute cache after an update is 2 seconds.
     # Use the UDP protocol because it is faster than TCP
-    config.vm.synced_folder "~/express_local/data/code", "/data/code", type: "nfs", mount_options: ["vers=3", "actimeo=2", "udp"]
+    config.vm.synced_folder "~/denexpress_local/data/code", "/data/code", type: "nfs", mount_options: ["vers=3", "actimeo=2", "udp"]
   end
 end

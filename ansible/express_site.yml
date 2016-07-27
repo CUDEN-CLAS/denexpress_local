@@ -1,5 +1,5 @@
 ---
-- hosts: express.local
+- hosts: denexpress.local
   vars_prompt:
     - name: "type"
       prompt: "[R]einstall an existing site, or [S]keleton a site (do not run install)"
@@ -10,7 +10,7 @@
       private: no
 
   vars:
-      database: "express_{{path}}"
+      database: "denexpress_{{path}}"
 
   tasks:
       - name: Create mysql database

@@ -27,7 +27,7 @@ A local development environment for Cu Boulder's Web Express Platform. **The pla
 * Clone this repository
 * Edit your hosts file (located at `/etc/hosts`) to include the following (_DEV, TEST, and PROD eveuri values are only applicable to CU Boulder_):
   ```
-  # express_local VMs
+  # denexpress_local VMs
   192.168.33.20 express.local
   192.168.33.21 inventory.local
   192.168.33.22 logs.local
@@ -44,7 +44,7 @@ A local development environment for Cu Boulder's Web Express Platform. **The pla
   ```
 * Edit your SSH config (`~/.ssh/config`) to include the following
   ```
-  # Connection information for express_local VMs
+  # Connection information for denexpress_local VMs
   Host 192.168.33.* express.local inventory.local logs.local
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
@@ -69,7 +69,7 @@ A local development environment for Cu Boulder's Web Express Platform. **The pla
 1. Once you have PHPStorm installed, go to PHPStorm > Preferences > PHP and click on the ellipsis in the "Interpreter" section.
 2. This will bring up another screen where your PHP interpreters are listed. You want to click the "+" icon to add a "remote" interpreter.
 3. On the next screen, you'll have the option of configuring via SSH or Vagrant, and you'll want to choose Vagrant.
-4. Now you have to add the "Vagrant Instance Folder". The location where be where you setup your vm, for me it was "~/vms/express_local".
+4. Now you have to add the "Vagrant Instance Folder". The location where be where you setup your vm, for me it was "~/denexpress_local".
 5. If you see the "vagrant host URL" line populate with an address, then you've successfully setup the remote PHP interpreter.
 6. If you get an error message saying that the "VboxManage binary" can't be found and needs adding to the PATH variable, then you need to debug that, and there are several ways you could fix your issue. For me, I just had to create a symbolic link to fix the issue.
     ```
