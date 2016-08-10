@@ -5,7 +5,7 @@ DirectoryIndex index.php index.html
 
   SetEnvIf X-FORWARDED-PROTO https HTTPS=off
   SetEnv CU_CENTRAL_EVE http://{{ EVE_API_USER }}:{{ EVE_API_PW }}@deninventory.local/inventory/
-  SetEnv WWWNG_ENV denexpress_local
+  SetEnv WWWNG_ENV express_local
 
   LogLevel info
   LogFormat "%{X-Forwarded-For}i %a %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
