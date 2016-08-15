@@ -9,6 +9,7 @@
         state: present
         update_cache: yes
     with_items:
+      - python-devel
       - "@development"
       - gcc
       - gcc-c++
@@ -20,39 +21,40 @@
       - mongodb-2.6.11
       - mongodb-server-2.6.11
       - python-pip
+      - mod_wsgi
       - python-setuptools-0.9.8
       - zlib-devel-1.2.7
 
-  - name: Download Python 2.7
-    get_url:
-      dest: /home/vagrant
-      url: http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz
-    become: yes
+  #- name: Download Python 2.7
+    #get_url:
+      #dest: /home/vagrant
+      #url: http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz
+    #become: yes
 
-  - name: Extract Python 2.7
-    shell: tar xzf ./Python-2.7.5.tgz -C /opt
-    become: yes
-    args:
-      chdir: /home/vagrant
-      creates: /opt/Python-2.7.5
+  #- name: Extract Python 2.7
+    #shell: tar xzf ./Python-2.7.5.tgz -C /opt
+    #become: yes
+    #args:
+      #chdir: /home/vagrant
+      #creates: /opt/Python-2.7.5
 
-  - name: Configure Python 2.7
-    shell: ./configure --prefix=/usr/local --enable-shared
-    become: yes
-    args:
-      chdir: /opt/Python-2.7.5
+  #- name: Configure Python 2.7
+    #shell: ./configure --prefix=/usr/local --enable-shared
+    #become: yes
+    #args:
+      #chdir: /opt/Python-2.7.5
 
-  - name: Make Python 2.7
-    shell: make
-    become: yes
-    args:
-      chdir: /opt/Python-2.7.5
+  #- name: Make Python 2.7
+    #shell: make
+    #become: yes
+    #args:
+      #chdir: /opt/Python-2.7.5
 
-  - name: Install Python 2.7
-    shell: make altinstall
-    become: yes
-    args:
-      chdir: /opt/Python-2.7.5 # Need to add a 'creates=' flag here
+  #- name: Install Python 2.7
+    #shell: make altinstall
+    #become: yes
+    #args:
+      #chdir: /opt/Python-2.7.5 # Need to add a 'creates=' flag here
 
   - name: Install Python packages to allow virtual environments
     shell: pip install virtualenv
@@ -72,7 +74,7 @@
 
     # Setup a Python 2.7 virtual environment to run the inventory
   - name: Setup an environment for the tracker using Python 2.7
-    shell: virtualenv -p /usr/local/bin/python2.7 /home/dplagnt/inventory-python27-environment
+    shell: virtualenv -p /usr/bin/python2.7 /home/dplagnt/inventory-python27-environment
     args:
       chdir: /opt/Python-2.7.5
       creates:  /home/dplagnt/inventory-python27-environment/bin/python2.7
@@ -109,37 +111,37 @@
     with_items:
       - { name: 'cerberus', version: '0.9.1' }
 
-  - name: Get mod_wsgi
-    get_url:
-      url: https://github.com/GrahamDumpleton/mod_wsgi/archive/3.5.tar.gz
-      dest: /opt
-      mode: 0440
+  #- name: Get mod_wsgi
+    #get_url:
+      #url: https://github.com/GrahamDumpleton/mod_wsgi/archive/3.5.tar.gz
+      #dest: /opt
+      #mode: 0440
 
-  - name: Unpack mod_wsgi
-    unarchive:
-      src: /opt/mod_wsgi-3.5.tar.gz
-      dest: /opt
-      copy: no
+  #- name: Unpack mod_wsgi
+    #unarchive:
+      #src: /opt/mod_wsgi-3.5.tar.gz
+      #dest: /opt
+      #copy: no
 
-  - name: Install mod_wsgi for Python 2.7
-    become: yes
-    shell: ./configure --with-apxs=/opt/rh/httpd24/root/usr/bin/apxs --with-python=/home/dplagnt/inventory-python27-environment/bin/python2.7
-    args:
-      chdir: /opt/mod_wsgi-3.5
+  #- name: Install mod_wsgi for Python 2.7
+    #become: yes
+    #shell: ./configure --with-apxs=/opt/rh/httpd24/root/usr/bin/apxs --with-python=/home/dplagnt/inventory-python27-environment/bin/python2.7
+    #args:
+      #chdir: /opt/mod_wsgi-3.5
 
-  - name: Make mod_wsgi
-    become: yes
-    shell: make
-    args:
-      chdir: /opt/mod_wsgi-3.5
+  #- name: Make mod_wsgi
+    #become: yes
+    #shell: make
+    #args:
+      #chdir: /opt/mod_wsgi-3.5
 
-  - name: Link mod_wsgi in
-    become: yes
-    shell: "cp /opt/mod_wsgi-3.5/.libs/mod_wsgi.so /opt/rh/httpd24/root/usr/lib64/httpd/modules/mod_wsgi.so"
+  #- name: Link mod_wsgi in
+    #become: yes
+    #shell: "cp /opt/mod_wsgi-3.5/.libs/mod_wsgi.so /opt/rh/httpd24/root/usr/lib64/httpd/modules/mod_wsgi.so"
 
   - name: Configure Apache 2.4 to use mod_wsgi
     lineinfile:
-      dest: "/opt/rh/httpd24/root/etc/httpd/conf/httpd.conf"
+      dest: "/etc/httpd/conf/httpd.conf"
       regexp: "^LoadModule wsgi_module modules/mod_wsgi.so"
       line: "LoadModule wsgi_module modules/mod_wsgi.so"
       state: present
@@ -149,7 +151,7 @@
   - name:  Add vhost configuration
     template:
       src: "vhosts.conf.j2"
-      dest: "/opt/rh/httpd24/root/etc/httpd/conf.d/vhosts.conf"
+      dest: "/etc/httpd/conf.d/vhosts.conf"
       mode: 0650
       owner: apache
       group: apache
