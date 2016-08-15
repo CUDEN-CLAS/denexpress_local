@@ -21,8 +21,8 @@ Vagrant.configure(2) do |config|
   hosts.each do |name, ip|
 
     config.vm.define name do |machine|
-      machine.vm.box = "bento/centos-6.7"
-      machine.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-6.7"
+      machine.vm.box = "bento/centos-7.2"
+      machine.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-7.2"
       machine.vm.hostname = "%s" % name
       machine.vm.network :private_network, ip: ip
 

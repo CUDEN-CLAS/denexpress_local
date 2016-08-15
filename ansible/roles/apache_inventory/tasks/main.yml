@@ -1,9 +1,9 @@
 ---
-  - name: Add repo for Apache 2.4
-    get_url:
-      url: "http://repos.fedorapeople.org/repos/jkaluza/httpd24/epel-httpd24.repo"
-      dest: "/etc/yum.repos.d/epel-httpd24.repo"
-      mode: 0644
+  #- name: Add repo for Apache 2.4
+    #get_url:
+      #url: "http://repos.fedorapeople.org/repos/jkaluza/httpd24/epel-httpd24.repo"
+      #dest: "/etc/yum.repos.d/epel-httpd24.repo"
+      #mode: 0644
 
   # httpd24-httpd-devel gives us apxs, which is used to build apache modules.
   # We need it to build mod_wsgi by hand.
@@ -66,11 +66,11 @@
         groups: "apache"
         append: yes
 
-  - name: Apache should own it's logs
-    file:
-      path:  /opt/rh/httpd24/root/var/log/httpd
-      owner: apache
-      group: apache
+  #- name: Apache should own it's logs
+    #file:
+      #path:  /opt/rh/httpd24/root/var/log/httpd
+      #owner: apache
+      #group: apache
 
   - name: Create symlinks to allow mod_wsgi to compile
     become: yes
@@ -78,6 +78,7 @@
       src: "{{ item.src }}"
       dest: "{{ item.dest }}"
       state: link
+      force: yes
     with_items:
       - { src: "/opt/rh/httpd24/root/usr/lib64/httpd", dest: "/httpd"}
       - { src: "/opt/rh/httpd24/root/usr/lib64/apr-1", dest: "/apr-1"}

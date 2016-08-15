@@ -7,11 +7,11 @@
 
   # Install some basics
   - name: Add repo for Extra Packages for Enterprise Linux (EPEL) and Remi
+    #yum:
+        #name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm"
+        #state: present
     yum:
-        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm"
-        state: present
-    yum:
-        name: "http://rpms.famillecollet.com/enterprise/remi-release-6.rpm"
+        name: "http://rpms.famillecollet.com/enterprise/remi-release-7.rpm"
         state: present
 
   - name: Install necessary OS packages
@@ -20,8 +20,9 @@
         state: present
         update_cache: yes
     with_items:
-        - git-1.7.1
+        - git
         - epel-release
+        - centos-release-scl
         - mysql-connector-python
         - nano
         - nc
