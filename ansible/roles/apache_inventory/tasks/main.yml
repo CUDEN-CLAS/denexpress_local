@@ -34,6 +34,15 @@
       state: present
     notify:
       - restart httpd24-httpd
+      
+  - name: Turn off HTTP2
+    lineinfile:
+      dest: "/opt/rh/httpd24/root/etc/httpd/conf.modules.d/00-base.conf"
+      regexp: "^LoadModule http2_module "
+      line: "#LoadModule http2_module modules/mod_http2.so"
+      state: present
+    notify:
+      - restart httpd24-httpd
 
   # TODO: Support SSL properly. See also settings.local_post.php
   #
