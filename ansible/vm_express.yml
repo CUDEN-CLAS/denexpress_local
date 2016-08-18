@@ -14,16 +14,16 @@
         - {role: ssh_keys, key_set: 'user' }
         - {role: server_base }
         - {role: apache }
-        - {role: php }
-        - {role: mysql }
-        - {role: varnish }
-        - {role: apc }
-        - {role: memcache }
-        - {role: xdebug }
-        - {role: rvm }
-        - {role: drush }
-        - {role: behat }
+        #- {role: php }
+        #- {role: mysql }
+        #- {role: varnish }
+        #- {role: apc }
+        #- {role: memcache }
+        #- {role: xdebug }
+        #- {role: rvm }
+        #- {role: drush }
+        #- {role: behat }
         #- {role: logstash }
-        - {role: express_code }
-        - {role: logging }
+        #- {role: express_code }
+        #- {role: logging }
         - {role: ssh_keys, key_set: 'dplagnt_dest' }
