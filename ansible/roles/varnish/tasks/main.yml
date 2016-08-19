@@ -1,7 +1,7 @@
 ---
   - name: Add Varnish repository
     yum:
-      name: "https://repo.varnish-cache.org/redhat/varnish-3.0.el6.rpm"
+      name: "https://repo.varnish-cache.org/redhat/varnish-4.1.el7.rpm"
       state: present
 
   - name: Install OS packages
