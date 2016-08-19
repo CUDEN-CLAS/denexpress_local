@@ -14,7 +14,7 @@
         - {role: ssh_keys, key_set: 'user' }
         - {role: server_base }
         - {role: apache }
-        #- {role: php }
+        - {role: php }
         #- {role: mysql }
         #- {role: varnish }
         #- {role: apc }
