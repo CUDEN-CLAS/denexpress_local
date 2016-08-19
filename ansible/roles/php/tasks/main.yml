@@ -157,5 +157,7 @@
       state: link
     with_items:
       - { src: "/opt/rh/php55/root/usr/bin/php", dest: "/usr/bin/php"}   
+      - { src: "/opt/rh/php55/root/usr/bin/pecl", dest: "/usr/bin/pecl"}
+      - { src: "/opt/rh/php55/root/usr/bin/pear", dest: "/usr/bin/pear"}
     notify:
         - restart apache  
