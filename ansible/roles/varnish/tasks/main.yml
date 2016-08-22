@@ -1,17 +1,14 @@
 ---
-  - name: Add Varnish repository
+  - name: Install varnish packages
+    become: yes
     yum:
-      name: "https://repo.varnish-cache.org/redhat/varnish-4.1.el7.rpm"
-      state: present
-
-  - name: Install OS packages
-    yum:
-        name: "{{ item }}"
+        pkg: "{{ item }}"
         state: present
         update_cache: yes
     with_items:
-        - gcc
         - varnish
+        - varnish-libs
+        - varnish-libs-devel
 
   - name: Copy Varnish configuration
     template:
