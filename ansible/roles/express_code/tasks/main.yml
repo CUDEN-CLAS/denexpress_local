@@ -1,20 +1,4 @@
 ---
-  - name: Get rid of default Varnish files
-    when: express_code_varnish
-    file:
-        path: "{{ item }}"
-        state: absent
-    with_items:
-        - /etc/varnish/default.vcl
-
-  - name: Symlink in default.vcl
-    when: express_code_varnish
-    file:
-        src: "/data/code/varnish/default.vcl"
-        dest: "/etc/varnish/default.vcl"
-        state: link
-    notify:
-        - restart varnish
 
   # - name: Get rid of ELK files
   #   when: express_code_elk
