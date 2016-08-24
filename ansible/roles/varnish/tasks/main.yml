@@ -41,19 +41,6 @@
         group: "root"
         mode: 0644
         force: yes
-        
-  - name: Get rid of default Varnish VCL file
-    file:
-        path: "{{ item }}"
-        state: absent
-    with_items:
-        - /etc/varnish/default.vcl
-
-  - name: Symlink in /data/code/varnish/default.vcl
-    file:
-        src: "/data/code/varnish/default.vcl"
-        dest: "/etc/varnish/default.vcl"
-        state: link
 
   - name: Get rid of default files
     file:
@@ -70,6 +57,9 @@
         group: "root"
         mode: 0644
         force: yes
+    notify:
+      - restart varnish
+      - restart varnishncsa
 
   - name: Check Varnish configuration
     command: "sudo varnishd -C -f /etc/varnish/default.vcl"
@@ -83,6 +73,12 @@
   - name: Ensure Varnish is started and set to run on startup
     service:
         name: varnish
+        state: started
+        enabled: yes
+  
+  - name: Ensure Varnishlog is started and set to run on startup
+    service:
+        name: varnishlog
         state: started
         enabled: yes
 

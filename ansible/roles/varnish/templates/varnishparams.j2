@@ -28,8 +28,8 @@ VARNISH_STORAGE="file,/var/lib/varnish/varnish_storage.bin,256M"
 VARNISH_TTL=120
 
 # User and group for the varnishd worker processes
-VARNISH_USER=varnish
-VARNISH_GROUP=varnish
+VARNISH_USER=root
+VARNISH_GROUP=root
 
 # Other options, see the man page varnishd(1)
 DAEMON_OPTS="-p thread_pool_min=50 -p thread_pool_max=1000 -p thread_pool_timeout=120"
