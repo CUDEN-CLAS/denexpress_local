@@ -38,6 +38,12 @@
     notify:
       - restart apache
       
+  - name: Apache should own it's logs
+    file:
+      path:  /var/log/httpd24
+      owner: apache
+      group: apache
+      
   - name: Create symlink to apachectl
     become: yes
     file:
