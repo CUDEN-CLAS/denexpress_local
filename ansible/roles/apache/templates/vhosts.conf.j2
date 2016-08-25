@@ -12,6 +12,9 @@ DirectoryIndex index.php index.html
   LogFormat "%h %l %u %t \"%r\" %>s %b" common
 
   Alias /sysadmintools/ /usr/local/www.misc/sysadmintools/
+  <Directory "/usr/local/www.misc/sysadmintools/">
+    Require all granted
+  </Directory>
 
   DocumentRoot /data/web/express
   <Directory "/data/web/express">
