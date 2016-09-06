@@ -18,8 +18,8 @@
       - openssl-devel-1.0.1e
       - openldap-devel
       - cyrus-sasl-lib-2.1.26
-      - mongodb-2.6.11
-      - mongodb-server-2.6.11
+      - mongodb-2.6.12
+      - mongodb-server-2.6.12
       - python-pip
       #- mod_wsgi
       - python-setuptools-0.9.8
