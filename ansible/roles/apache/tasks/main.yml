@@ -10,6 +10,14 @@
         - httpd24-httpd-devel
         - httpd24-mod_ssl
         - openssl
+        
+  - name:  Uninstall older httpd packages
+    yum:
+        name: "{{ item }}"
+        state: absent
+        update_cache: no
+    with_items:
+        - httpd
 
   - name: Configure Apache to listen on 80
     lineinfile:
