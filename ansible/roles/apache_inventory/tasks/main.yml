@@ -15,6 +15,7 @@
     with_items:
       - httpd24
       - httpd24-httpd-devel
+      - httpd24-mod_ldap
       #- openssl
 
   - name: Configure Apache to listen on 80

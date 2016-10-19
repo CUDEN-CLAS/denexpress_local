@@ -1,0 +1,20 @@
+---
+
+  - name: Copy artemis cert (root and intermediate combined)
+    copy:
+        src: "InstantSSL.ca-bundle"
+        dest: "/etc/pki/tls/certs/InstantSSL.ca-bundle"
+        owner: root
+        group: root
+        mode: 0644
+  
+  - name:  Add openldap configuration
+    template:
+      src: "ldap.conf.j2"
+      dest: "/etc/openldap/ldap.conf"
+      mode: 0644
+      owner: root
+      group: root
+      
+  - name: Set hashes on certificates
+    command: "cacertdir_rehash /etc/pki/tls/certs"

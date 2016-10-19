@@ -11,6 +11,7 @@
       - {role: ssh_keys, key_set: 'user' }
       - {role: server_base }
       - {role: apache_inventory }
+      - {role: openldap }
       - {role: python }
       #- {role: logstash }
       - {role: ssh_keys, key_set: 'dplagnt_src' }
