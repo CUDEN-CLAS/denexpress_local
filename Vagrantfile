@@ -25,6 +25,7 @@ Vagrant.configure(2) do |config|
       machine.vm.box_url = "https://atlas.hashicorp.com/bento/boxes/centos-7.2"
       machine.vm.hostname = "%s" % name
       machine.vm.network :private_network, ip: ip
+      machine.vm.network :public_network, bridge: 'em1'
 
       machine.vm.provider "virtualbox" do |v|
         v.name = name
@@ -38,6 +39,8 @@ Vagrant.configure(2) do |config|
 
         v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
         v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+	v.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]        
+        
       end
 
     end
