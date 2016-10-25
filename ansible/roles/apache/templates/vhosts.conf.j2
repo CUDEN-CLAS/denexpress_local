@@ -1,10 +1,10 @@
 DirectoryIndex index.php index.html
 
 <VirtualHost *:80>
-  ServerName denexpress.local
+  ServerName clas-test.ucdenver.pvt
 
   SetEnvIf X-FORWARDED-PROTO https HTTPS=off
-  SetEnv CU_CENTRAL_EVE http://{{ EVE_API_USER }}:{{ EVE_API_PW }}@deninventory.local/inventory/
+  SetEnv CU_CENTRAL_EVE http://{{ EVE_API_USER }}:{{ EVE_API_PW }}@clas-invtest.ucdenver.pvt/inventory/
   SetEnv WWWNG_ENV express_local
 
   LogLevel info
@@ -25,7 +25,7 @@ DirectoryIndex index.php index.html
 </VirtualHost>
 
 #<VirtualHost *:443>
-#  ServerName denexpress.local
+#  ServerName clas-test.ucdenver.pvt
 #
 #
 #  SSLEngine on

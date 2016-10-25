@@ -8,8 +8,8 @@
 # Test webserver so that the inventory can move sites up and down the environment stack.
 hosts = {
 
-  "deninventory.local" => "192.168.33.21",
-  "denexpress.local" => "192.168.33.20",
+  "clas-invtest.ucdenver.pvt" => "10.20.103.15
+  "clas-test.ucdenver.pvt" => "10.20.103.16
   #"logs.local" => "192.168.33.22",
 
 }
@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
       machine.vm.provider "virtualbox" do |v|
         v.name = name
 
-        if name.include? "denexpress.local"
+        if name.include? "clas-test.ucdenver.pvt"
           v.customize ["modifyvm", :id, "--memory", 4096]
           v.customize ["modifyvm", :id, "--cpus", "2"]
         else
@@ -45,7 +45,7 @@ Vagrant.configure(2) do |config|
 
     end
 
-    if name.include? "deninventory.local"
+    if name.include? "clas-invtest.ucdenver.pvt"
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/vm_inventory.yml"
         ansible.inventory_path = "ansible/hosts"
@@ -54,7 +54,7 @@ Vagrant.configure(2) do |config|
       end
     end
 
-    if name.include? "denexpress.local"
+    if name.include? "clas-test.ucdenver.pvt"
       config.vm.provision "ansible" do |ansible|
         ansible.playbook = "ansible/vm_express.yml"
         ansible.inventory_path = "ansible/hosts"

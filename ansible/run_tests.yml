@@ -1,5 +1,5 @@
 ---
-- hosts: denexpress.local
+- hosts: clas-test.ucdenver.pvt
   vars_prompt:
     # - name: "path"
     #   prompt: "Enter the path of the site you would like to test. Leave blank for"

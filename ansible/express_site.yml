@@ -1,5 +1,5 @@
 ---
-- hosts: denexpress.local
+- hosts: clas-test.ucdenver.pvt
   vars_prompt:
     - name: "type"
       prompt: "[R]einstall an existing site, or [S]keleton a site (do not run install)"
