@@ -8,8 +8,8 @@
 # Test webserver so that the inventory can move sites up and down the environment stack.
 hosts = {
 
-  "clas-invtest.ucdenver.pvt" => "10.20.103.15
-  "clas-test.ucdenver.pvt" => "10.20.103.16
+  "clas-invtest.ucdenver.pvt" => "10.20.103.15",
+  "clas-test.ucdenver.pvt" => "10.20.103.16",
   #"logs.local" => "192.168.33.22",
 
 }
